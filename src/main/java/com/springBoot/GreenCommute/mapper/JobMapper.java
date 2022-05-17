@@ -15,6 +15,7 @@ public interface JobMapper {
     @Mapping(source = "jobId", target = "jobId")
     @Mapping(source = "jobTitle", target = "jobTitle")
     @Mapping(source = "jobLocation", target = "jobLocation")
+    @Mapping(target = "commuteOptions", ignore = true)
     JobDto toJobDto(Job optionalJob);
 
     List<JobDto> toJobDtoList (List<Job> jobList);

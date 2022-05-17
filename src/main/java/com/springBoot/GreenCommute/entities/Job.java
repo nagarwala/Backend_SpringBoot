@@ -30,4 +30,10 @@ public class Job {
             inverseJoinColumns = {@JoinColumn(name = "skill_id")})
     @JsonManagedReference
     private List<Skill> skillList;
+
+    @ManyToMany
+    @JoinTable(name = "job_has_commute",joinColumns = {@JoinColumn(name = "job_id")},
+       inverseJoinColumns = {@JoinColumn(name = "commute_id")})
+    @JsonManagedReference
+    private List<CommuteOption> commuteOptionList;
 }

@@ -1,9 +1,11 @@
 package com.springBoot.GreenCommute.controllers;
 
 import com.springBoot.GreenCommute.dto.JobDto;
+import com.springBoot.GreenCommute.entities.CommuteOption;
 import com.springBoot.GreenCommute.entities.Job;
 import com.springBoot.GreenCommute.entities.Skill;
 import com.springBoot.GreenCommute.exception.DataNotFoundException;
+import com.springBoot.GreenCommute.helper.Helper;
 import com.springBoot.GreenCommute.mapper.JobMapper;
 import com.springBoot.GreenCommute.repositories.JobRepository;
 import com.springBoot.GreenCommute.service.JobService;
@@ -26,45 +28,36 @@ public class JobController {
     @Autowired
     private JobMapper jobMapper;
 
-    List<String> getSkillNames(List<Skill> skillList){
-        List<String> jobHasSkills = new ArrayList<>();
-        for(Skill skill: skillList){
-            jobHasSkills.add(skill.getSkillName());
-        }
-        return jobHasSkills;
-    }
-
-    List<Job> getJobListFilteredBySkills(List<Job>jobList, String[] skills){
-        List<Job> jobFilteredList = jobList.stream().filter(job -> {
-            List<Skill> skillList = job.getSkillList();
-            List<String> skillNames = getSkillNames(skillList);
-            for(String skillName: skills){
-                if(skillNames.indexOf(skillName) != -1)
-                    return true;
-            }
-            return false;
-        }).collect(Collectors.toList());
-        return  jobFilteredList;
-    }
+    @Autowired
+    private Helper helper;
 
     @GetMapping("/jobs")
     public List<JobDto> getAllJobs(@RequestParam (required = false) String location, @RequestParam(required = false) String[] skills) {
         List<Job> jobList = jobService.getAllJobs();
-        if(location == null && skills == null)
-            return jobMapper.toJobDtoList(jobList);
+        List<JobDto> jobDtoList = jobMapper.toJobDtoList(jobList);
+        if(location == null && skills == null) {
+            jobDtoList =  jobMapper.toJobDtoList(jobList);
+        }
         else if(skills == null) {
          List<Job> jobListByLocation =  jobService.getJobsByLocation(location);
-         return jobMapper.toJobDtoList(jobListByLocation);
+         jobDtoList =  jobMapper.toJobDtoList(jobListByLocation);
         }
         else if(location == null){
-            List<Job> jobListBySkills =  getJobListFilteredBySkills(jobList,skills);
-            return jobMapper.toJobDtoList(jobListBySkills);
+            List<Job> jobListBySkills =  helper.getJobListFilteredBySkills(jobList,skills);
+            jobDtoList =  jobMapper.toJobDtoList(jobListBySkills);
         }
         else{
             List<Job> jobFilteredListByLocation = jobService.getJobsByLocation(location);
-            List<Job> multipleFilteredJobList = getJobListFilteredBySkills(jobFilteredListByLocation,skills);
-            return jobMapper.toJobDtoList(multipleFilteredJobList);
+            List<Job> multipleFilteredJobList = helper.getJobListFilteredBySkills(jobFilteredListByLocation,skills);
+            jobDtoList =  jobMapper.toJobDtoList(multipleFilteredJobList);
         }
+
+        for(JobDto jobDto: jobDtoList){
+            Job job = jobService.getJobById(jobDto.getJobId()).get();
+            List<String> commute = helper.getCommuteOption(job);
+            jobDto.setCommuteOptions(commute);
+        }
+        return jobDtoList;
     }
 
     @GetMapping("/jobs/{jobId}")

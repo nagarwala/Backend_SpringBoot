@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface SavedJobService {
 
-    boolean addToSavedJob(int userId, int jobId);
+    void addToSavedJob(int userId, int jobId);
 
     void deleteFromSavedJob(int userId, int jobId);
 

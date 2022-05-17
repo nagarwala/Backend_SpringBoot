@@ -7,6 +7,7 @@ import com.springBoot.GreenCommute.dto.ResponseDto;
 import com.springBoot.GreenCommute.entities.Job;
 import com.springBoot.GreenCommute.mapper.JobMapper;
 import com.springBoot.GreenCommute.service.SavedJobService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Map;
 
+@Slf4j
 @RestController
 public class UserSavedJobController {
 
@@ -23,7 +25,6 @@ public class UserSavedJobController {
     @Autowired
     private JobMapper jobMapper;
 
-    private ResponseDto responseDto;
 
     @GetMapping("/users/{userId}/savedJobs")
     public List<JobDto> getSavedJobsForUser(@PathVariable int userId){
@@ -31,28 +32,29 @@ public class UserSavedJobController {
     }
 
     @PostMapping("/users/{userId}/savedJobs")
-    public String addJobToUser(@PathVariable int userId, @RequestBody Map<String,Integer> reqPayload) throws JsonProcessingException {
+    public ResponseDto addJobToUser(@PathVariable int userId, @RequestBody Map<String,Integer> reqPayload) throws JsonProcessingException {
         int jobId = reqPayload.get("jobId");
-        if (savedJobService.addToSavedJob(userId,jobId)) {
-            String res = "Job with id: " + jobId + " is added successfully to user :" + userId;
-            responseDto.setStatus(HttpStatus.OK.value());
-            responseDto.setMessage(res);
-        }
-        else {
-            responseDto.setMessage("Error");
-            responseDto.setStatus(HttpStatus.BAD_REQUEST.value());
-        }
+        ResponseDto responseDto = new ResponseDto();
+        savedJobService.addToSavedJob(userId,jobId) ;
+        String res = "Job with id: " + jobId + " is added successfully to user :" + userId;
+        responseDto.setStatus(HttpStatus.OK.value());
+        responseDto.setMessage(res);
         responseDto.setTimestamp(System.currentTimeMillis());
-        ObjectMapper mapper = new ObjectMapper();
 
-        return mapper.writeValueAsString(responseDto);
+        return responseDto;
     }
 
     @DeleteMapping("/users/{userId}/savedJobs")
-    public String deleteJobFromUser(@PathVariable int userId, @RequestBody Map<String,Integer> reqPayload){
+    public ResponseDto deleteJobFromUser(@PathVariable int userId, @RequestBody Map<String,Integer> reqPayload){
         int jobId = reqPayload.get("jobId");
         savedJobService.deleteFromSavedJob(userId,jobId);
-        return("Job with id: "+ jobId + " is deleted successfully from user :"+ userId);
+        ResponseDto responseDto = new ResponseDto();
+        String res =  "Job with id: "+ jobId + " is deleted successfully from user :"+ userId;
+        responseDto.setStatus(HttpStatus.OK.value());
+        responseDto.setMessage(res);
+        responseDto.setTimestamp(System.currentTimeMillis());
+        return responseDto;
+
     }
 
 }

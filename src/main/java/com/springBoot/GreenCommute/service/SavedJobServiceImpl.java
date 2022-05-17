@@ -36,7 +36,7 @@ public class SavedJobServiceImpl implements SavedJobService {
     private Helper helper;
 
     @Override
-    public boolean addToSavedJob(int userId, int jobId) {
+    public void addToSavedJob(int userId, int jobId) {
 
         Optional<User> tempUser = userService.getUserById(userId);
         Optional<Job> tempJob =  jobService.getJobById(jobId);
@@ -44,7 +44,6 @@ public class SavedJobServiceImpl implements SavedJobService {
         if(tempSavedJob == null) {
             SavedJob savedJob = new SavedJob(new Timestamp(System.currentTimeMillis()), tempUser.get(), tempJob.get());
             savedJobRepository.save(savedJob);
-            return true;
         }
         else
             throw new DuplicateKeyException("The job is already present in the list");

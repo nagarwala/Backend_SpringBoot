@@ -1,4 +1,4 @@
-package com.springboot.greencommute;
+package com.springboot.greencommute.controllerTest;
 
 import com.springboot.greencommute.entities.Job;
 import com.springboot.greencommute.entities.User;

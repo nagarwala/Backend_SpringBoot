@@ -3,7 +3,7 @@ package com.springboot.greencommute.controllerTest;
 import com.springboot.greencommute.entities.User;
 import com.springboot.greencommute.service.UserService;
 import org.junit.jupiter.api.Assertions;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;

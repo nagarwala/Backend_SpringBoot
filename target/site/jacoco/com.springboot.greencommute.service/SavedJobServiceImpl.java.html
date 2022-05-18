@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>SavedJobServiceImpl.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">GreenCommute</a> &gt; <a href="index.source.html" class="el_package">com.springboot.greencommute.service</a> &gt; <span class="el_source">SavedJobServiceImpl.java</span></div><h1>SavedJobServiceImpl.java</h1><pre class="source lang-java linenums">package com.springboot.greencommute.service;
+
+import com.springboot.greencommute.exception.DataNotFoundException;
+import com.springboot.greencommute.helper.Helper;
+import com.springboot.greencommute.dto.JobDto;
+import com.springboot.greencommute.entities.User;
+import com.springboot.greencommute.entities.SavedJob;
+import com.springboot.greencommute.mapper.JobMapper;
+import com.springboot.greencommute.repositories.SavedJobRepository;
+import com.springboot.greencommute.entities.Job;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DuplicateKeyException;
+import org.springframework.stereotype.Service;
+
+import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
+@Service
+<span class="fc" id="L21">public class SavedJobServiceImpl implements SavedJobService {</span>
+
+    @Autowired
+    private UserService userService;
+
+    @Autowired
+    private JobService jobService;
+
+    @Autowired
+    private JobMapper jobMapper;
+
+    @Autowired
+    private SavedJobRepository savedJobRepository;
+
+    @Autowired
+    private Helper helper;
+
+    @Override
+    public void addToSavedJob(int userId, int jobId) {
+
+<span class="nc" id="L41">        Optional&lt;User&gt; tempUser = userService.getUserById(userId);</span>
+<span class="nc" id="L42">        Optional&lt;Job&gt; tempJob =  jobService.getJobById(jobId);</span>
+<span class="nc bnc" id="L43" title="All 4 branches missed.">        if(tempUser.isPresent() &amp;&amp; tempJob.isPresent()) {</span>
+<span class="nc" id="L44">            SavedJob tempSavedJob = savedJobRepository.findByUserAndJobId(userId, jobId);</span>
+<span class="nc bnc" id="L45" title="All 2 branches missed.">            if (tempSavedJob == null) {</span>
+<span class="nc" id="L46">                SavedJob savedJob = new SavedJob(new Timestamp(System.currentTimeMillis()), tempUser.get(), tempJob.get());</span>
+<span class="nc" id="L47">                savedJobRepository.save(savedJob);</span>
+<span class="nc" id="L48">            } else</span>
+<span class="nc" id="L49">                throw new DuplicateKeyException(&quot;The job is already present in the list&quot;);</span>
+<span class="nc" id="L50">        }</span>
+        else {
+<span class="nc" id="L52">            throw new DataNotFoundException(&quot;User or job does not exists&quot;);</span>
+        }
+<span class="nc" id="L54">    }</span>
+
+    @Override
+    public void deleteFromSavedJob(int userId, int jobId) {
+
+<span class="nc" id="L59">        Optional&lt;User&gt; tempUser = userService.getUserById(userId);</span>
+<span class="nc" id="L60">        Optional&lt;Job&gt; tempJob =  jobService.getJobById(jobId);</span>
+<span class="nc bnc" id="L61" title="All 4 branches missed.">        if(tempUser.isPresent() &amp;&amp; tempJob.isPresent()) {</span>
+<span class="nc" id="L62">            SavedJob jobToDelete = savedJobRepository.findByUserAndJobId(userId, jobId);</span>
+<span class="nc bnc" id="L63" title="All 2 branches missed.">            if (jobToDelete == null)</span>
+<span class="nc" id="L64">                throw new DataNotFoundException(&quot;User does not have a job saved with id: &quot; + jobId);</span>
+<span class="nc" id="L65">            savedJobRepository.delete(jobToDelete);</span>
+<span class="nc" id="L66">        }</span>
+        else
+<span class="nc" id="L68">            throw new DataNotFoundException(&quot;User or job does not exists&quot;);</span>
+<span class="nc" id="L69">    }</span>
+
+    @Override
+    public List&lt;JobDto&gt; getSavedJobsForUser(int userId) {
+<span class="nc" id="L73">        Optional&lt;User&gt; user = userService.getUserById(userId);</span>
+<span class="nc bnc" id="L74" title="All 2 branches missed.">        if(!user.isPresent())</span>
+<span class="nc" id="L75">            throw new DataNotFoundException(&quot;No user found with id: &quot; + userId);</span>
+
+<span class="nc" id="L77">        List&lt;Job&gt; jobList = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L78">        List&lt;SavedJob&gt; savedJobList = user.get().getSavedJobList();</span>
+<span class="nc bnc" id="L79" title="All 2 branches missed.">        for(SavedJob job: savedJobList){</span>
+<span class="nc" id="L80">            jobList.add(job.getJob());</span>
+<span class="nc" id="L81">        }</span>
+
+<span class="nc" id="L83">        List&lt;JobDto&gt; jobDtoList = jobMapper.toJobDtoList(jobList);</span>
+<span class="nc bnc" id="L84" title="All 2 branches missed.">        for(JobDto dto: jobDtoList){</span>
+<span class="nc" id="L85">            Job job = jobService.getJobById(dto.getJobId()).get();</span>
+<span class="nc" id="L86">            List&lt;String&gt; commuteOptions = helper.getCommuteOption(job);</span>
+<span class="nc" id="L87">            dto.setCommuteOptions(commuteOptions);</span>
+<span class="nc" id="L88">        }</span>
+<span class="nc" id="L89">        return jobDtoList;</span>
+    }
+}
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

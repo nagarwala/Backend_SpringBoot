@@ -1,0 +1,6 @@
+# Created at 2022-05-18T16:06:55.641
+java.lang.IllegalStateException: Running on JDK 9 requires -javaagent:<proper path>/jmockit-1.n.jar or -Djdk.attach.allowAttachSelf
+
+# Created at 2022-05-18T16:06:55.642
+	at java.base/java.lang.Iterable.forEach(Iterable.java:74)
+

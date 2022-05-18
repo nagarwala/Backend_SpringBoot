@@ -1,0 +1,4 @@
+com/springboot/greencommute/controllerTest/GreenCommuteUserTests.class
+com/springboot/greencommute/controllerTest/GreenCommuteJobTests.class
+com/springboot/greencommute/dtoTest/UserDtoTest.class
+com/springboot/greencommute/dtoTest/JobDtoTest.class

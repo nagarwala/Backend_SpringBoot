@@ -30,7 +30,6 @@ public class GreenCommuteJobTests {
         Assertions.assertEquals(jobList,testJobs);
         Mockito.verify(jobService).getAllJobs();
     }
-
     @Test
    public void getJobsByIdTest(){
         int id = 1;

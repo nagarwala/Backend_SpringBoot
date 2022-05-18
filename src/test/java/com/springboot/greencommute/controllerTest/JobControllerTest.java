@@ -17,13 +17,13 @@ import java.util.Optional;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class JobControllerTest {
+ class JobControllerTest {
 
     @Mock
     private JobService jobService;
 
     @Test
-    public void getAllJobTest(){
+     void getAllJobTest(){
         List<Job> jobList = Collections.emptyList();
         List<Job> testJobs = jobService.getAllJobs();
         Mockito.when(jobService.getAllJobs()).thenReturn(jobList);
@@ -31,7 +31,7 @@ public class JobControllerTest {
         Mockito.verify(jobService).getAllJobs();
     }
     @Test
-    public void getJobsByIdTest(){
+     void getJobsByIdTest(){
         int id = 1;
         Job job = new Job(1,"Developer","Mumbai",null,null);
         Optional<Job> jobOptional = Optional.of(job);

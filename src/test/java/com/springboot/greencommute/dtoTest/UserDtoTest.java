@@ -9,12 +9,12 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class UserDtoTest {
+ class UserDtoTest {
 
     UserDto userDto = new UserDto(1,"TestDTO");
 
     @Test
-   public void dtoEntityTest(){
+    void dtoEntityTest(){
         Assertions.assertEquals(1,userDto.getUserId());
         Assertions.assertEquals("TestDTO",userDto.getUserName());
         userDto = new UserDto();
@@ -24,6 +24,5 @@ public class UserDtoTest {
         Assertions.assertEquals(2,userDto.getUserId());
         Assertions.assertEquals("testDto2",userDto.getUserName());
 
-        Assertions.assertEquals("UserDto(userId=2, userName=testDto2)",userDto.toString());
     }
 }

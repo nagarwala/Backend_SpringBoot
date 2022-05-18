@@ -1,6 +1,7 @@
 package com.springboot.greencommute;
 
 import com.springboot.greencommute.entities.User;
+import com.springboot.greencommute.mapper.UserMapper;
 import com.springboot.greencommute.service.UserService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -20,6 +21,9 @@ class GreenCommuteUserTests {
 
 	@Mock
 	private UserService userService;
+
+	@Mock
+	UserMapper userMapper;
 
 	@Test
 	 void getAllUserTest(){

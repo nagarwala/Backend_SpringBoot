@@ -1,4 +1,4 @@
-package com.springboot.greencommute.controllerTest;
+package com.springboot.greencommute.serviceTest;
 
 import com.springboot.greencommute.entities.User;
 import com.springboot.greencommute.service.UserService;
@@ -16,7 +16,7 @@ import java.util.Optional;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
- class UserControllerTest {
+ class UserServiceTest {
 
     @Mock
     private UserService userService;

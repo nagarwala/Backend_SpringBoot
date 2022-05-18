@@ -1,7 +1,6 @@
-package com.springboot.greencommute.controllerTest;
+package com.springboot.greencommute.serviceTest;
 
 import com.springboot.greencommute.entities.Job;
-import com.springboot.greencommute.entities.User;
 import com.springboot.greencommute.service.JobService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
@@ -17,7 +16,7 @@ import java.util.Optional;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
- class JobControllerTest {
+ class JobServiceTest {
 
     @Mock
     private JobService jobService;

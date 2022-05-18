@@ -9,12 +9,12 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class JobDtoTest {
+ class JobDtoTest {
 
     JobDto jobDto = new JobDto(1,"Analyst","Cochin",null);
 
     @Test
-    public void dtoEntityJobTest(){
+     void dtoEntityJobTest(){
         Assertions.assertEquals(1,jobDto.getJobId());
         Assertions.assertEquals("Analyst",jobDto.getJobTitle());
         Assertions.assertEquals("Cochin",jobDto.getJobLocation());

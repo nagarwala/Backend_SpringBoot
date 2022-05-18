@@ -1,7 +1,7 @@
 package com.springboot.greencommute.dtoTest;
 
 import com.springboot.greencommute.dto.JobDto;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;

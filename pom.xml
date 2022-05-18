@@ -15,6 +15,7 @@
 	<description>Practice project for Spring Boot</description>
 	<properties>
 		<java.version>11</java.version>
+		<sonar.projectKey>nagarwala_Backend_SpringBoot</sonar.projectKey>
 		<sonar.organization>nagarwala</sonar.organization>
 		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
 	</properties>

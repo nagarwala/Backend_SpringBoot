@@ -59,6 +59,17 @@
 			<version>1.4.2.Final</version>
 		</dependency>
 		<dependency>
+			<artifactId>junit</artifactId>
+			<groupId>junit</groupId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<artifactId>jmockit</artifactId>
+			<groupId>org.jmockit</groupId>
+			<version>1.36.3</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-databind</artifactId>
 			<version>2.13.2.2</version>

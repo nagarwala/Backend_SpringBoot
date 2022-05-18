@@ -1,4 +1,4 @@
-package com.springboot.greencommute;
+package com.springboot.greencommute.controllerTest;
 
 import com.springboot.greencommute.entities.User;
 import com.springboot.greencommute.mapper.UserMapper;
@@ -21,9 +21,6 @@ class GreenCommuteUserTests {
 
 	@Mock
 	private UserService userService;
-
-	@Mock
-	UserMapper userMapper;
 
 	@Test
 	 void getAllUserTest(){

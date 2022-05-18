@@ -26,7 +26,7 @@ class GreenCommuteUserTests {
 	UserMapper userMapper;
 
 	@Test
-	 void getAllUserTest(){
+	public void getAllUserTest(){
 		List<User> userList = Collections.emptyList();
 		List<User> testUsers = userService.getUserList();
 		Mockito.when(userService.getUserList()).thenReturn(userList);
@@ -34,7 +34,7 @@ class GreenCommuteUserTests {
 		Mockito.verify(userService).getUserList();
 	}
 	@Test
-	void getUserByIdTest(){
+	public void getUserByIdTest(){
 		int id = 1;
 		User user = new User(1,"Nitesh",null);
 		Optional<User> usersOptional = Optional.of(user);

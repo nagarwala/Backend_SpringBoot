@@ -23,7 +23,7 @@ public class GreenCommuteJobTests {
     private JobService jobService;
 
     @Test
-    void getAllJobTest(){
+    public void getAllJobTest(){
         List<Job> jobList = Collections.emptyList();
         List<Job> testJobs = jobService.getAllJobs();
         Mockito.when(jobService.getAllJobs()).thenReturn(jobList);
@@ -32,7 +32,7 @@ public class GreenCommuteJobTests {
     }
 
     @Test
-    void getJobsByIdTest(){
+   public void getJobsByIdTest(){
         int id = 1;
         Job job = new Job(1,"Developer","Mumbai",null,null);
         Optional<Job> jobOptional = Optional.of(job);

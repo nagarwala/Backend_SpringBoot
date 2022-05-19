@@ -10,7 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.sql.Timestamp;
 
 @SpringBootTest
-public class SavedJobEntityTest {
+class SavedJobEntityTest {
 
     Timestamp timestamp = new Timestamp(System.currentTimeMillis());
     User user = new User(1,"test1",null);
@@ -19,7 +19,7 @@ public class SavedJobEntityTest {
     SavedJob savedJob = new SavedJob(timestamp,user,job);
 
     @Test
-    public void savedJobTest(){
+     void savedJobTest(){
         Assertions.assertEquals(timestamp,savedJob.getJobsSavedTime());
         Assertions.assertEquals(user,savedJob.getUser());
         Assertions.assertEquals(job,savedJob.getJob());

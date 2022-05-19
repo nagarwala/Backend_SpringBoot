@@ -6,12 +6,12 @@ import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-public class CommuteOptionTest {
+class CommuteOptionTest {
 
     CommuteOption commuteOption = new CommuteOption(1,"bus",null);
 
     @Test
-    public void CommuteTest(){
+    void CommuteTest(){
         Assertions.assertEquals(1,commuteOption.getCommuteId());
         Assertions.assertEquals("bus",commuteOption.getCommuteName());
         Assertions.assertNull(commuteOption.getJobList());

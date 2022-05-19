@@ -9,7 +9,7 @@ import org.springframework.http.HttpStatus;
 import java.sql.Timestamp;
 
 @SpringBootTest
-public class ErrorResponseTest {
+class ErrorResponseTest {
     Timestamp timestamp = new Timestamp(System.currentTimeMillis());
     ErrorResponse errorResponse = new ErrorResponse(HttpStatus.NOT_FOUND.value(),"Incorrect", timestamp.getTime());
 

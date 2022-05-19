@@ -14,12 +14,4 @@ public class ResponseDto {
    private String message;
    private long timestamp;
 
-    @Override
-    public String toString() {
-        return "ResponseDto{" +
-                "status=" + status +
-                ", message='" + message + '\'' +
-                ", Timestamp=" + timestamp +
-                '}';
-    }
 }

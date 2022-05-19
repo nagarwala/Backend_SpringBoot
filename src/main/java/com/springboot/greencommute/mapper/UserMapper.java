@@ -4,7 +4,6 @@ import com.springboot.greencommute.dto.UserDto;
 import com.springboot.greencommute.entities.User;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
-import org.mapstruct.factory.Mappers;
 
 import java.util.List;
 

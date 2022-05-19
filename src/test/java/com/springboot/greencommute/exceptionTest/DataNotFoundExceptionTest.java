@@ -15,4 +15,16 @@ class DataNotFoundExceptionTest {
     void dataNotFoundExceptionTest() {
         Assertions.assertEquals("No Data Found!",dataNotFoundException.getMessage());
     }
+
+    @Test
+    void dataCauseExceptionTest(){
+        dataNotFoundException = new DataNotFoundException("Data is empty",null);
+        Assertions.assertEquals("Data is empty",dataNotFoundException.getMessage());
+        Assertions.assertNull(dataNotFoundException.getCause());
+    }
+    @Test
+    void causeExceptionTest(){
+        dataNotFoundException = new DataNotFoundException((Throwable) null);
+        Assertions.assertNull(dataNotFoundException.getCause());
+    }
 }

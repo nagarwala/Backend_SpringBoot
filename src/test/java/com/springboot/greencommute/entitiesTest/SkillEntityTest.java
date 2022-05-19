@@ -6,12 +6,12 @@ import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-public class SkillEntityTest {
+class SkillEntityTest {
 
     Skill skill = new Skill(1,"swimming",null);
 
     @Test
-    public void SkillTest(){
+    void SkillTest(){
         Assertions.assertEquals(1,skill.getSkillId());
         Assertions.assertEquals("swimming",skill.getSkillName());
         Assertions.assertNull(skill.getJobList());

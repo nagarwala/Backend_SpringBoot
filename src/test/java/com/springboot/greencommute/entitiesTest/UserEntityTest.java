@@ -6,10 +6,10 @@ import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-public class UserEntityTest {
+ class UserEntityTest {
 
     @Test
-    public void userTest(){
+     void userTest(){
 
         User user = new User(1,"testUser",null);
         Assertions.assertEquals(1,user.getUserId());

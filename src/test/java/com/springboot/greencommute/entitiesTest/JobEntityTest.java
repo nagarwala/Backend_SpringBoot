@@ -6,12 +6,12 @@ import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-public class JobEntityTest {
+ class JobEntityTest {
 
     Job job = new Job(1,"test","us",null,null);
 
     @Test
-    public void jobTest(){
+     void jobTest(){
         Assertions.assertEquals(1, job.getJobId());
         Assertions.assertEquals("test", job.getJobTitle());
         Assertions.assertEquals("us",job.getJobLocation());

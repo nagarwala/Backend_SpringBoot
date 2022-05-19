@@ -10,7 +10,6 @@ import java.util.List;
 
 @Mapper(componentModel = "spring",uses = {User.class, UserDto.class})
 public interface UserMapper {
-    JobMapper INSTANCE = Mappers.getMapper(JobMapper.class);
 
     @Mapping(source = "userId",target = "userId")
     @Mapping(source = "userName", target = "userName")

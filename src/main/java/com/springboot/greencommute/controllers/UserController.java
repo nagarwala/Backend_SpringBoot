@@ -24,12 +24,6 @@ public class UserController {
     @Autowired
     private UserMapper userMapper;
 
-    @GetMapping("/users")
-    public List<UserDto> getListOfUsers(){
-        List<User> userList =  userService.getUserList();
-        return userMapper.toUserDtoList(userList);
-    }
-
     @GetMapping("/users/{userId}")
     public UserDto getUserById(@PathVariable int userId){
         Optional<User> user = userService.getUserById(userId);

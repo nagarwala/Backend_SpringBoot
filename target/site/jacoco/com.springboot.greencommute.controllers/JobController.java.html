@@ -55,11 +55,11 @@ import java.util.Optional;
 
     @GetMapping(&quot;/jobs/{jobId}&quot;)
     public JobDto getJobById(@PathVariable int jobId){
-<span class="nc" id="L58">        Optional&lt;Job&gt; job = jobService.getJobById(jobId);</span>
-<span class="nc bnc" id="L59" title="All 2 branches missed.">        if(job.isEmpty())</span>
+<span class="fc" id="L58">        Optional&lt;Job&gt; job = jobService.getJobById(jobId);</span>
+<span class="pc bpc" id="L59" title="1 of 2 branches missed.">        if(job.isEmpty())</span>
 <span class="nc" id="L60">            throw new DataNotFoundException(&quot;No user found with id: &quot; + jobId);</span>
-<span class="nc" id="L61">        return jobMapper.toJobDto(job.get());</span>
+<span class="fc" id="L61">        return jobMapper.toJobDto(job.get());</span>
     }
 }
 
-</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

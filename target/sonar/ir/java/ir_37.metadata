@@ -1,0 +1,1 @@
+com.springboot.greencommute.entities.SavedJob#<init>(Ljava/sql/Timestamp;Lcom/springboot/greencommute/entities/User;Lcom/springboot/greencommute/entities/Job;)V

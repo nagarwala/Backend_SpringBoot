@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.Mockito;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.ArrayList;
@@ -16,7 +17,7 @@ import java.util.List;
 @SpringBootTest
 class HelperTest {
 
-    @Mock
+    @Autowired
     Helper helper;
 
     @Test
@@ -33,15 +34,16 @@ class HelperTest {
         skillNames.add(skill.getSkillName());
         skillNames.add(skill2.getSkillName());
 
-        Mockito.when(helper.getSkillNames(skillList)).thenReturn(skillNames);
+        //Mockito.when(helper.getSkillNames(skillList)).thenReturn(skillNames);
+        Assertions.assertNotNull(helper);
         Assertions.assertEquals(skillNames,helper.getSkillNames(skillList));
-        Mockito.verify(helper).getSkillNames(skillList);
+        //Mockito.verify(helper).getSkillNames(skillList);
 
         skillNames = new ArrayList<>();
         List<Skill> skillsList1 = new ArrayList<>();
-        Mockito.when(helper.getSkillNames(skillsList1)).thenReturn(skillNames);
+        //Mockito.when(helper.getSkillNames(skillsList1)).thenReturn(skillNames);
         Assertions.assertEquals(skillNames,helper.getSkillNames(skillsList1));
-        Mockito.verify(helper).getSkillNames(skillList);
+        //Mockito.verify(helper).getSkillNames(skillList);
     }
 
     @Test
@@ -52,9 +54,9 @@ class HelperTest {
         Job job = new Job(1,"dev","pune",null,commuteOptionList);
         List<String> commuteOptionNames = new ArrayList<>();
         commuteOptionNames.add("Bus");
-        Mockito.when(helper.getCommuteOption(job)).thenReturn(commuteOptionNames);
+       // Mockito.when(helper.getCommuteOption(job)).thenReturn(commuteOptionNames);
         Assertions.assertEquals(commuteOptionNames,helper.getCommuteOption(job));
-        Mockito.verify(helper).getCommuteOption(job);
+       // Mockito.verify(helper).getCommuteOption(job);
     }
 
     @Test
@@ -72,13 +74,13 @@ class HelperTest {
         jobsList.add(job2);
 
         String[] skillSearch = new String[]{"C++"};
-        Mockito.when(helper.getJobListFilteredBySkills(jobsList,skillSearch)).thenReturn(jobsList);
+        //Mockito.when(helper.getJobListFilteredBySkills(jobsList,skillSearch)).thenReturn(jobsList);
         Assertions.assertEquals(jobsList,helper.getJobListFilteredBySkills(jobsList,skillSearch));
-        Mockito.verify(helper).getJobListFilteredBySkills(jobsList,skillSearch);
+        //Mockito.verify(helper).getJobListFilteredBySkills(jobsList,skillSearch);
 
         String[] skillSearch2 = new String[]{"Python"};
-        Mockito.when(helper.getJobListFilteredBySkills(jobsList,skillSearch2)).thenReturn(jobsList1);
+        //Mockito.when(helper.getJobListFilteredBySkills(jobsList,skillSearch2)).thenReturn(jobsList1);
         Assertions.assertEquals(jobsList1,helper.getJobListFilteredBySkills(jobsList,skillSearch2));
-        Mockito.verify(helper).getJobListFilteredBySkills(jobsList,skillSearch2);
+        //Mockito.verify(helper).getJobListFilteredBySkills(jobsList,skillSearch2);
     }
 }

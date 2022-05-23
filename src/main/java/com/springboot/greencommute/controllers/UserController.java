@@ -19,9 +19,6 @@ public class UserController {
     private UserService userService;
 
     @Autowired
-    private SavedJobService savedJobService;
-
-    @Autowired
     private UserMapper userMapper;
 
     @GetMapping("/users/{userId}")

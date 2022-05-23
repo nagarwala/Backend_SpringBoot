@@ -1,0 +1,23 @@
+
+ecom.springboot.greencommute.controllers.UserSavedJobController#getSavedJobsForUser(I)Ljava/util/List;u
+k/home/nitesa/GreenCommute/src/main/java/com/springboot/greencommute/controllers/UserSavedJobController.java (+"1*Ô
+1u
+k/home/nitesa/GreenCommute/src/main/java/com/springboot/greencommute/controllers/UserSavedJobController.java (î
+ë
+u
+k/home/nitesa/GreenCommute/src/main/java/com/springboot/greencommute/controllers/UserSavedJobController.java (9
+%03com.springboot.greencommute.service.SavedJobService"__id*W*U@
+>com.springboot.greencommute.controllers.UserSavedJobController"
+savedJobService…∆
+u
+k/home/nitesa/GreenCommute/src/main/java/com/springboot/greencommute/controllers/UserSavedJobController.java (;
+%1java.util.List"Zcom.springboot.greencommute.service.SavedJobService#getSavedJobsForUser(I)Ljava/util/List;*;
+9
+%03com.springboot.greencommute.service.SavedJobService*
+""2getSavedJobsForUser(I)"è
+u
+k/home/nitesa/GreenCommute/src/main/java/com/springboot/greencommute/controllers/UserSavedJobController.java	 (<
+
+%1java.util.List:
+""BB@
+>com.springboot.greencommute.controllers.UserSavedJobController

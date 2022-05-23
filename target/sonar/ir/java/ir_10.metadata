@@ -1,0 +1,12 @@
+com.springboot.greencommute.service.SavedJobServiceImpl#addToSavedJob(II)V
+java.util.Optional#isPresent()Z
+org.springframework.dao.DuplicateKeyException#instance-init#
+com.springboot.greencommute.entities.SavedJob#<init>(Ljava/sql/Timestamp;Lcom/springboot/greencommute/entities/User;Lcom/springboot/greencommute/entities/Job;)V
+java.sql.Timestamp#<init>(J)V
+com.springboot.greencommute.exception.DataNotFoundException#instance-init#
+org.springframework.dao.DuplicateKeyException#<init>(Ljava/lang/String;)V
+java.sql.Timestamp#instance-init#
+com.springboot.greencommute.exception.DataNotFoundException#<init>(Ljava/lang/String;)V
+java.lang.System#currentTimeMillis()J
+java.util.Optional#get()Ljava/lang/Object;
+com.springboot.greencommute.entities.SavedJob#instance-init#

@@ -1,0 +1,3 @@
+com.springboot.greencommute.helper.Helper#getCommuteOption(Lcom/springboot/greencommute/entities/Job;)Ljava/util/List;
+java.util.ArrayList#<init>()V
+java.util.ArrayList#instance-init#

@@ -9,20 +9,20 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-<span class="fc" id="L12">public class UserServiceImpl implements UserService{</span>
+public class UserServiceImpl implements UserService{
 
-    @Autowired
+
     private UserRepository userRepository;
 
-    @Override
-    public List&lt;User&gt; getUserList() {
-<span class="nc" id="L19">        return userRepository.findAll();</span>
-    }
+    @Autowired
+<span class="fc" id="L18">    public UserServiceImpl(UserRepository userRepository) {</span>
+<span class="fc" id="L19">        this.userRepository = userRepository;</span>
+<span class="fc" id="L20">    }</span>
 
     @Override
     public Optional&lt;User&gt; getUserById(int userId) {
-<span class="nc" id="L24">        return userRepository.findById(userId);</span>
+<span class="fc" id="L24">        return userRepository.findById(userId);</span>
     }
 
 }
-</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

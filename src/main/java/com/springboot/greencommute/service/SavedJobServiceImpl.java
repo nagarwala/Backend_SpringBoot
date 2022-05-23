@@ -26,6 +26,10 @@ public class SavedJobServiceImpl implements SavedJobService {
     @Autowired
     private JobService jobService;
 
+    public SavedJobServiceImpl(SavedJobRepository savedJobRepository) {
+        this.savedJobRepository = savedJobRepository;
+    }
+
     @Autowired
     private JobMapper jobMapper;
 
@@ -55,17 +59,10 @@ public class SavedJobServiceImpl implements SavedJobService {
 
     @Override
     public void deleteFromSavedJob(int userId, int jobId) {
-
-        Optional<User> tempUser = userService.getUserById(userId);
-        Optional<Job> tempJob =  jobService.getJobById(jobId);
-        if(tempUser.isPresent() && tempJob.isPresent()) {
             SavedJob jobToDelete = savedJobRepository.findByUserAndJobId(userId, jobId);
             if (jobToDelete == null)
                 throw new DataNotFoundException("User does not have a job saved with id: " + jobId);
             savedJobRepository.delete(jobToDelete);
-        }
-        else
-            throw new DataNotFoundException("User or job does not exists");
     }
 
     @Override

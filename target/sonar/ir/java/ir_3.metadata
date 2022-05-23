@@ -1,0 +1,5 @@
+com.springboot.greencommute.controllers.UserSavedJobController#deleteJobFromUser(ILjava/util/Map;)Lcom/springboot/greencommute/dto/ResponseDto;
+org.springframework.http.HttpStatus#value()I
+com.springboot.greencommute.dto.ResponseDto#instance-init#
+java.lang.System#currentTimeMillis()J
+com.springboot.greencommute.dto.ResponseDto#<init>()V

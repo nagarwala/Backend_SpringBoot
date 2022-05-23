@@ -13,32 +13,32 @@ import java.util.stream.Collectors;
 <span class="fc" id="L13">public class Helper {</span>
 
    public List&lt;String&gt; getCommuteOption(Job job){
-<span class="nc" id="L16">        List&lt;CommuteOption&gt; commuteOptionList = job.getCommuteOptionList();</span>
-<span class="nc" id="L17">        List&lt;String&gt; commuteOptions = new ArrayList&lt;&gt;();</span>
-<span class="nc bnc" id="L18" title="All 2 branches missed.">        for(CommuteOption option: commuteOptionList){</span>
-<span class="nc" id="L19">            commuteOptions.add(option.getCommuteName());</span>
-<span class="nc" id="L20">        }</span>
-<span class="nc" id="L21">        return commuteOptions;</span>
+<span class="fc" id="L16">        List&lt;CommuteOption&gt; commuteOptionList = job.getCommuteOptionList();</span>
+<span class="fc" id="L17">        List&lt;String&gt; commuteOptions = new ArrayList&lt;&gt;();</span>
+<span class="fc bfc" id="L18" title="All 2 branches covered.">        for(CommuteOption option: commuteOptionList){</span>
+<span class="fc" id="L19">            commuteOptions.add(option.getCommuteName());</span>
+<span class="fc" id="L20">        }</span>
+<span class="fc" id="L21">        return commuteOptions;</span>
     }
 
    public List&lt;String&gt; getSkillNames(List&lt;Skill&gt; skillList){
-<span class="nc" id="L25">        List&lt;String&gt; jobHasSkills = new ArrayList&lt;&gt;();</span>
-<span class="nc bnc" id="L26" title="All 2 branches missed.">        for(Skill skill: skillList){</span>
-<span class="nc" id="L27">            jobHasSkills.add(skill.getSkillName());</span>
-<span class="nc" id="L28">        }</span>
-<span class="nc" id="L29">        return jobHasSkills;</span>
+<span class="fc" id="L25">        List&lt;String&gt; jobHasSkills = new ArrayList&lt;&gt;();</span>
+<span class="fc bfc" id="L26" title="All 2 branches covered.">        for(Skill skill: skillList){</span>
+<span class="fc" id="L27">            jobHasSkills.add(skill.getSkillName());</span>
+<span class="fc" id="L28">        }</span>
+<span class="fc" id="L29">        return jobHasSkills;</span>
     }
 
     public List&lt;Job&gt; getJobListFilteredBySkills(List&lt;Job&gt;jobList, String[] skills){
-<span class="nc" id="L33">         return jobList.stream().filter(job -&gt; {</span>
-<span class="nc" id="L34">            List&lt;Skill&gt; skillList = job.getSkillList();</span>
-<span class="nc" id="L35">            List&lt;String&gt; skillNames = getSkillNames(skillList);</span>
-<span class="nc bnc" id="L36" title="All 2 branches missed.">            for(String skillName: skills){</span>
-<span class="nc bnc" id="L37" title="All 2 branches missed.">                if(skillNames.indexOf(skillName) != -1)</span>
-<span class="nc" id="L38">                    return true;</span>
+<span class="fc" id="L33">         return jobList.stream().filter(job -&gt; {</span>
+<span class="fc" id="L34">            List&lt;Skill&gt; skillList = job.getSkillList();</span>
+<span class="fc" id="L35">            List&lt;String&gt; skillNames = getSkillNames(skillList);</span>
+<span class="fc bfc" id="L36" title="All 2 branches covered.">            for(String skillName: skills){</span>
+<span class="fc bfc" id="L37" title="All 2 branches covered.">                if(skillNames.indexOf(skillName) != -1)</span>
+<span class="fc" id="L38">                    return true;</span>
             }
-<span class="nc" id="L40">            return false;</span>
-<span class="nc" id="L41">        }).collect(Collectors.toList());</span>
+<span class="fc" id="L40">            return false;</span>
+<span class="fc" id="L41">        }).collect(Collectors.toList());</span>
     }
 }
-</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

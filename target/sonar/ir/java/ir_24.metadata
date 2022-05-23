@@ -1,0 +1,2 @@
+com.springboot.greencommute.helper.Helper#getJobListFilteredBySkills(Ljava/util/List;[Ljava/lang/String;)Ljava/util/List;
+java.util.stream.Collectors#toList()Ljava/util/stream/Collector;

@@ -9,9 +9,9 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.util.List;
 
-<span class="nc" id="L12">@AllArgsConstructor</span>
+<span class="fc" id="L12">@AllArgsConstructor</span>
 <span class="fc" id="L13">@NoArgsConstructor</span>
-<span class="nc" id="L14">@Getter @Setter</span>
+<span class="fc" id="L14">@Getter @Setter</span>
 @Entity
 @Table(name = &quot;skill&quot;)
 public class Skill {
@@ -19,14 +19,14 @@ public class Skill {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = &quot;skill_id&quot;)
-<span class="nc" id="L22">    private int skillId;</span>
+<span class="fc" id="L22">    private int skillId;</span>
 
     @Column(name = &quot;skill_name&quot;)
-<span class="nc" id="L25">    private String skillName;</span>
+<span class="fc" id="L25">    private String skillName;</span>
 
     @ManyToMany(mappedBy = &quot;skillList&quot;,cascade = CascadeType.ALL)
     @JsonBackReference
-<span class="nc" id="L29">    private List&lt;Job&gt; jobList;</span>
+<span class="fc" id="L29">    private List&lt;Job&gt; jobList;</span>
 }
 
-</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

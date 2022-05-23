@@ -6,10 +6,9 @@ import lombok.*;
 import javax.persistence.*;
 import java.util.List;
 
-<span class="nc bnc" id="L9" title="All 40 branches missed.">@Data</span>
-<span class="nc" id="L10">@AllArgsConstructor</span>
-<span class="fc" id="L11">@NoArgsConstructor</span>
-<span class="nc" id="L12">@Getter @Setter</span>
+<span class="fc" id="L9">@AllArgsConstructor</span>
+<span class="fc" id="L10">@NoArgsConstructor</span>
+<span class="fc" id="L11">@Getter @Setter</span>
 @Entity
 @Table(name = &quot;job&quot;)
 public class Job {
@@ -17,24 +16,24 @@ public class Job {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = &quot;job_id&quot;)
-<span class="nc" id="L20">    private int jobId;</span>
+<span class="fc" id="L19">    private int jobId;</span>
 
     @Column(name = &quot;job_title&quot;)
-<span class="nc" id="L23">    private String jobTitle;</span>
+<span class="fc" id="L22">    private String jobTitle;</span>
 
     @Column(name = &quot;job_location&quot;)
-<span class="nc" id="L26">    private String jobLocation;</span>
+<span class="fc" id="L25">    private String jobLocation;</span>
 
     @ManyToMany
     @JoinTable(name = &quot;job_skillset&quot;, joinColumns = {@JoinColumn(name = &quot;job_id&quot;)},
             inverseJoinColumns = {@JoinColumn(name = &quot;skill_id&quot;)})
     @JsonManagedReference
-<span class="nc" id="L32">    private List&lt;Skill&gt; skillList;</span>
+<span class="fc" id="L31">    private List&lt;Skill&gt; skillList;</span>
 
     @ManyToMany
     @JoinTable(name = &quot;job_has_commute&quot;,joinColumns = {@JoinColumn(name = &quot;job_id&quot;)},
        inverseJoinColumns = {@JoinColumn(name = &quot;commute_id&quot;)})
     @JsonManagedReference
-<span class="nc" id="L38">    private List&lt;CommuteOption&gt; commuteOptionList;</span>
+<span class="fc" id="L37">    private List&lt;CommuteOption&gt; commuteOptionList;</span>
 }
-</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

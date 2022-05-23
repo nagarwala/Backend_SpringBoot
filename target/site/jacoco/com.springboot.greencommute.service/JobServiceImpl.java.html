@@ -10,28 +10,33 @@ import java.util.NoSuchElementException;
 import java.util.Optional;
 
 @Service
-<span class="fc" id="L13">public class JobServiceImpl implements JobService{</span>
+public class JobServiceImpl implements JobService{
+
+
+    private JobRepository jobRepository;
 
     @Autowired
-    private JobRepository jobRepository;
+<span class="fc" id="L19">    public JobServiceImpl(JobRepository jobRepository) {</span>
+<span class="fc" id="L20">        this.jobRepository = jobRepository;</span>
+<span class="fc" id="L21">    }</span>
 
     @Override
     public List&lt;Job&gt; getAllJobs() {
-<span class="nc" id="L20">        return jobRepository.findAll();</span>
+<span class="fc" id="L25">        return jobRepository.findAll();</span>
     }
 
     @Override
     public Optional&lt;Job&gt; getJobById(int jobId) {
-<span class="nc" id="L25">        return jobRepository.findById(jobId);</span>
+<span class="fc" id="L30">        return jobRepository.findById(jobId);</span>
     }
 
     @Override
     public List&lt;Job&gt; getJobsByLocation(String location) {
-<span class="nc" id="L30">        List&lt;Job&gt; jobList = jobRepository.getJobByLocation(location);</span>
-<span class="nc bnc" id="L31" title="All 2 branches missed.">        if(jobList.isEmpty())</span>
-<span class="nc" id="L32">            throw new NoSuchElementException(&quot;No Job found with that location&quot;);</span>
+<span class="fc" id="L35">        List&lt;Job&gt; jobList = jobRepository.getJobByLocation(location);</span>
+<span class="pc bpc" id="L36" title="1 of 2 branches missed.">        if(jobList.isEmpty())</span>
+<span class="nc" id="L37">            throw new NoSuchElementException(&quot;No Job found with that location&quot;);</span>
 
-<span class="nc" id="L34">        return jobList;</span>
+<span class="fc" id="L39">        return jobList;</span>
     }
 }
-</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

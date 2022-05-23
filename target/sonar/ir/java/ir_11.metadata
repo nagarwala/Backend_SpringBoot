@@ -1,0 +1,3 @@
+com.springboot.greencommute.service.SavedJobServiceImpl#deleteFromSavedJob(II)V
+com.springboot.greencommute.exception.DataNotFoundException#instance-init#
+com.springboot.greencommute.exception.DataNotFoundException#<init>(Ljava/lang/String;)V

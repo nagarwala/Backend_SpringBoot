@@ -5,6 +5,7 @@
 /home/nitesa/GreenCommute/src/test/java/com/springboot/greencommute/dtoTest/JobDtoTest.java
 /home/nitesa/GreenCommute/src/test/java/com/springboot/greencommute/dtoTest/ResponseDtoTest.java
 /home/nitesa/GreenCommute/src/test/java/com/springboot/greencommute/mapperTest/UserMapperTest.java
+/home/nitesa/GreenCommute/src/test/java/com/springboot/greencommute/exceptionTest/DataExceptionHandlerTest.java
 /home/nitesa/GreenCommute/src/test/java/com/springboot/greencommute/entitiesTest/CommuteOptionTest.java
 /home/nitesa/GreenCommute/src/test/java/com/springboot/greencommute/serviceTest/SavedJobServiceTest.java
 /home/nitesa/GreenCommute/src/test/java/com/springboot/greencommute/mapperTest/JobMapperTest.java
@@ -14,5 +15,7 @@
 /home/nitesa/GreenCommute/src/test/java/com/springboot/greencommute/entitiesTest/SkillEntityTest.java
 /home/nitesa/GreenCommute/src/test/java/com/springboot/greencommute/controllerTest/JobControllerTest.java
 /home/nitesa/GreenCommute/src/test/java/com/springboot/greencommute/exceptionTest/ErrorResponseTest.java
+/home/nitesa/GreenCommute/src/test/java/com/springboot/greencommute/GreenCommuteApplicationTest.java
+/home/nitesa/GreenCommute/src/test/java/com/springboot/greencommute/controllerTest/UserSavedJobControllerTest.java
 /home/nitesa/GreenCommute/src/test/java/com/springboot/greencommute/entitiesTest/SavedJobEntityTest.java
 /home/nitesa/GreenCommute/src/test/java/com/springboot/greencommute/dtoTest/UserDtoTest.java

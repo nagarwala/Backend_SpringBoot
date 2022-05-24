@@ -4,16 +4,14 @@ import com.springboot.greencommute.dto.UserDto;
 import com.springboot.greencommute.entities.User;
 import com.springboot.greencommute.exception.DataNotFoundException;
 import com.springboot.greencommute.mapper.UserMapper;
-import com.springboot.greencommute.service.SavedJobService;
 import com.springboot.greencommute.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 import java.util.Optional;
 
 @RestController
-<span class="fc" id="L16">public class UserController {</span>
+<span class="fc" id="L14">public class UserController {</span>
 
     @Autowired
     private UserService userService;
@@ -23,10 +21,10 @@ import java.util.Optional;
 
     @GetMapping(&quot;/users/{userId}&quot;)
     public UserDto getUserById(@PathVariable int userId){
-<span class="fc" id="L26">        Optional&lt;User&gt; user = userService.getUserById(userId);</span>
-<span class="pc bpc" id="L27" title="1 of 2 branches missed.">        if(user.isEmpty())</span>
-<span class="nc" id="L28">            throw new DataNotFoundException(&quot;No user found with id: &quot; + userId);</span>
-<span class="fc" id="L29">        return userMapper.toUserDto(user.get());</span>
+<span class="fc" id="L24">        Optional&lt;User&gt; user = userService.getUserById(userId);</span>
+<span class="pc bpc" id="L25" title="1 of 2 branches missed.">        if(user.isEmpty())</span>
+<span class="nc" id="L26">            throw new DataNotFoundException(&quot;No user found with id: &quot; + userId);</span>
+<span class="fc" id="L27">        return userMapper.toUserDto(user.get());</span>
     }
 }
 

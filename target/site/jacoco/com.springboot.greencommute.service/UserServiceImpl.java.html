@@ -5,7 +5,6 @@ import com.springboot.greencommute.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -15,13 +14,13 @@ public class UserServiceImpl implements UserService{
     private UserRepository userRepository;
 
     @Autowired
-<span class="fc" id="L18">    public UserServiceImpl(UserRepository userRepository) {</span>
-<span class="fc" id="L19">        this.userRepository = userRepository;</span>
-<span class="fc" id="L20">    }</span>
+<span class="fc" id="L17">    public UserServiceImpl(UserRepository userRepository) {</span>
+<span class="fc" id="L18">        this.userRepository = userRepository;</span>
+<span class="fc" id="L19">    }</span>
 
     @Override
     public Optional&lt;User&gt; getUserById(int userId) {
-<span class="fc" id="L24">        return userRepository.findById(userId);</span>
+<span class="fc" id="L23">        return userRepository.findById(userId);</span>
     }
 
 }

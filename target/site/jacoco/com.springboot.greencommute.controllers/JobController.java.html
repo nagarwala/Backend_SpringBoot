@@ -26,31 +26,31 @@ import java.util.Optional;
 
     @GetMapping(&quot;/jobs&quot;)
     public List&lt;JobDto&gt; getAllJobs(@RequestParam (required = false) String location, @RequestParam(required = false) String[] skills) {
-<span class="nc" id="L29">        List&lt;Job&gt; jobList = jobService.getAllJobs();</span>
+<span class="fc" id="L29">        List&lt;Job&gt; jobList = jobService.getAllJobs();</span>
         List&lt;JobDto&gt; jobDtoList;
-<span class="nc bnc" id="L31" title="All 4 branches missed.">        if(location == null &amp;&amp; skills == null) {</span>
-<span class="nc" id="L32">            jobDtoList =  jobMapper.toJobDtoList(jobList);</span>
+<span class="fc bfc" id="L31" title="All 4 branches covered.">        if(location == null &amp;&amp; skills == null) {</span>
+<span class="fc" id="L32">            jobDtoList =  jobMapper.toJobDtoList(jobList);</span>
         }
-<span class="nc bnc" id="L34" title="All 2 branches missed.">        else if(skills == null) {</span>
-<span class="nc" id="L35">         List&lt;Job&gt; jobListByLocation =  jobService.getJobsByLocation(location);</span>
-<span class="nc" id="L36">         jobDtoList =  jobMapper.toJobDtoList(jobListByLocation);</span>
-<span class="nc" id="L37">        }</span>
-<span class="nc bnc" id="L38" title="All 2 branches missed.">        else if(location == null){</span>
-<span class="nc" id="L39">            List&lt;Job&gt; jobListBySkills =  helper.getJobListFilteredBySkills(jobList,skills);</span>
-<span class="nc" id="L40">            jobDtoList =  jobMapper.toJobDtoList(jobListBySkills);</span>
-<span class="nc" id="L41">        }</span>
+<span class="fc bfc" id="L34" title="All 2 branches covered.">        else if(skills == null) {</span>
+<span class="fc" id="L35">         List&lt;Job&gt; jobListByLocation =  jobService.getJobsByLocation(location);</span>
+<span class="fc" id="L36">         jobDtoList =  jobMapper.toJobDtoList(jobListByLocation);</span>
+<span class="fc" id="L37">        }</span>
+<span class="fc bfc" id="L38" title="All 2 branches covered.">        else if(location == null){</span>
+<span class="fc" id="L39">            List&lt;Job&gt; jobListBySkills =  helper.getJobListFilteredBySkills(jobList,skills);</span>
+<span class="fc" id="L40">            jobDtoList =  jobMapper.toJobDtoList(jobListBySkills);</span>
+<span class="fc" id="L41">        }</span>
         else{
-<span class="nc" id="L43">            List&lt;Job&gt; jobFilteredListByLocation = jobService.getJobsByLocation(location);</span>
-<span class="nc" id="L44">            List&lt;Job&gt; multipleFilteredJobList = helper.getJobListFilteredBySkills(jobFilteredListByLocation,skills);</span>
-<span class="nc" id="L45">            jobDtoList =  jobMapper.toJobDtoList(multipleFilteredJobList);</span>
+<span class="fc" id="L43">            List&lt;Job&gt; jobFilteredListByLocation = jobService.getJobsByLocation(location);</span>
+<span class="fc" id="L44">            List&lt;Job&gt; multipleFilteredJobList = helper.getJobListFilteredBySkills(jobFilteredListByLocation,skills);</span>
+<span class="fc" id="L45">            jobDtoList =  jobMapper.toJobDtoList(multipleFilteredJobList);</span>
         }
 
-<span class="nc bnc" id="L48" title="All 2 branches missed.">        for(JobDto jobDto: jobDtoList){</span>
+<span class="pc bpc" id="L48" title="1 of 2 branches missed.">        for(JobDto jobDto: jobDtoList){</span>
 <span class="nc" id="L49">            Job job = jobService.getJobById(jobDto.getJobId()).get();</span>
 <span class="nc" id="L50">            List&lt;String&gt; commute = helper.getCommuteOption(job);</span>
 <span class="nc" id="L51">            jobDto.setCommuteOptions(commute);</span>
 <span class="nc" id="L52">        }</span>
-<span class="nc" id="L53">        return jobDtoList;</span>
+<span class="fc" id="L53">        return jobDtoList;</span>
     }
 
     @GetMapping(&quot;/jobs/{jobId}&quot;)

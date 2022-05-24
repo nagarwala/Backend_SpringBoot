@@ -4,6 +4,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.springboot.greencommute.controllers.JobController;
 import com.springboot.greencommute.dto.JobDto;
 import com.springboot.greencommute.entities.Job;
+import com.springboot.greencommute.entities.Skill;
+import com.springboot.greencommute.helper.Helper;
 import com.springboot.greencommute.mapper.JobMapper;
 import com.springboot.greencommute.service.JobService;
 import com.springboot.greencommute.service.JobServiceImpl;
@@ -23,6 +25,8 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import static org.mockito.Mockito.*;
@@ -32,6 +36,9 @@ class JobControllerTest {
 
     @InjectMocks
    JobController jobController;
+
+    @Mock
+    Helper helper;
 
     @Mock
     JobMapper jobMapper;
@@ -66,5 +73,50 @@ class JobControllerTest {
                 andDo(MockMvcResultHandlers.print());
         verify(jobService).getJobById(1);
         verify(jobService,times(1)).getJobById(1);
+    }
+
+    @Test
+    void getAllJobTestByFiltering() throws Exception {
+     Job job = new Job(1,"dev","Koch",null,null);
+        Skill skill = new Skill(1,"singing",null);
+        List<Skill> skillList = new ArrayList<>();
+        skillList.add(skill);
+        job.setSkillList(skillList);
+        JobDto jobDto = jobMapper.toJobDto(job);
+        Optional<Job> jobsOptional = Optional.of(job);
+        List<Job> jobsList = new ArrayList<>();
+        jobsList.add(job);
+        List<JobDto> jobsDtoList = jobMapper.toJobDtoList(jobsList);
+        when(jobService.getAllJobs()).thenReturn(jobsList);
+        mockMvc.perform(MockMvcRequestBuilders.get("/jobs").
+                        contentType(MediaType.APPLICATION_JSON).
+                        content(asJsonString(jobsDtoList))).
+                andDo(MockMvcResultHandlers.print());
+        verify(jobService).getAllJobs();
+        verify(jobService,times(1)).getAllJobs();
+
+        when(jobService.getJobsByLocation("Koch")).thenReturn(jobsList);
+        mockMvc.perform(MockMvcRequestBuilders.get("/jobs?location=Koch").
+                        contentType(MediaType.APPLICATION_JSON).
+                        content(asJsonString(jobsDtoList))).
+                andDo(MockMvcResultHandlers.print());
+        verify(jobService).getJobsByLocation("Koch");
+        verify(jobService,times(1)).getJobsByLocation("Koch");
+
+        String[] skillSearch = new String[]{"singing"};
+        when(helper.getJobListFilteredBySkills(jobsList,skillSearch)).thenReturn(jobsList);
+        mockMvc.perform(MockMvcRequestBuilders.get("/jobs?skills=singing").
+                        contentType(MediaType.APPLICATION_JSON).
+                        content(asJsonString(jobsDtoList))).
+                andDo(MockMvcResultHandlers.print());
+        verify(helper).getJobListFilteredBySkills(jobsList,skillSearch);
+        verify(helper,times(1)).getJobListFilteredBySkills(jobsList,skillSearch);
+
+        when(helper.getJobListFilteredBySkills(jobsList,skillSearch)).thenReturn(jobsList);
+        mockMvc.perform(MockMvcRequestBuilders.get("/jobs?location=Koch&skills=singing").
+                        contentType(MediaType.APPLICATION_JSON).
+                        content(asJsonString(jobsDtoList))).
+                andDo(MockMvcResultHandlers.print());
+        verify(helper,times(2)).getJobListFilteredBySkills(jobsList,skillSearch);
     }
 }

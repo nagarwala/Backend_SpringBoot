@@ -8,6 +8,7 @@ import com.springboot.greencommute.entities.SavedJob;
 import com.springboot.greencommute.mapper.JobMapper;
 import com.springboot.greencommute.repositories.SavedJobRepository;
 import com.springboot.greencommute.entities.Job;
+import com.springboot.greencommute.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Service;
@@ -21,7 +22,7 @@ import java.util.Optional;
 public class SavedJobServiceImpl implements SavedJobService {
 
     @Autowired
-    private UserService userService;
+    private UserRepository userRepository;
 
     @Autowired
     private JobService jobService;
@@ -42,7 +43,7 @@ public class SavedJobServiceImpl implements SavedJobService {
     @Override
     public void addToSavedJob(int userId, int jobId) {
 
-        Optional<User> tempUser = userService.getUserById(userId);
+        Optional<User> tempUser = userRepository.findById(userId);
         Optional<Job> tempJob =  jobService.getJobById(jobId);
         if(tempUser.isPresent() && tempJob.isPresent()) {
             SavedJob tempSavedJob = savedJobRepository.findByUserAndJobId(userId, jobId);
@@ -51,10 +52,10 @@ public class SavedJobServiceImpl implements SavedJobService {
                 savedJobRepository.save(savedJob);
             } else
                 throw new DuplicateKeyException("The job is already present in the list");
-        }
+       }
         else {
-            throw new DataNotFoundException("User or job does not exists");
-        }
+           throw new DataNotFoundException("User or job does not exists");
+      }
     }
 
     @Override
@@ -67,7 +68,7 @@ public class SavedJobServiceImpl implements SavedJobService {
 
     @Override
     public List<JobDto> getSavedJobsForUser(int userId) {
-        Optional<User> user = userService.getUserById(userId);
+        Optional<User> user = userRepository.findById(userId);
         if(!user.isPresent())
             throw new DataNotFoundException("No user found with id: " + userId);
 

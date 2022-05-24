@@ -2,7 +2,6 @@ com/springboot/greencommute/service/UserService.class
 com/springboot/greencommute/repositories/JobRepository.class
 com/springboot/greencommute/exception/DataNotFoundException.class
 com/springboot/greencommute/controllers/UserController.class
-com/springboot/greencommute/exception/DataExceptionHandler.class
 com/springboot/greencommute/entities/User.class
 com/springboot/greencommute/service/JobService.class
 com/springboot/greencommute/dto/ResponseDto.class

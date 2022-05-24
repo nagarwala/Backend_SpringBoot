@@ -3,5 +3,5 @@ projectKey=nagarwala_Backend_SpringBoot
 serverUrl=https://sonarcloud.io
 serverVersion=8.0.0.29158
 dashboardUrl=https://sonarcloud.io/dashboard?id=nagarwala_Backend_SpringBoot
-ceTaskId=AYDwiBrwFqrM8-xM7NyU
-ceTaskUrl=https://sonarcloud.io/api/ce/task?id=AYDwiBrwFqrM8-xM7NyU
+ceTaskId=AYD0LMxZNC4PFqHB6V2d
+ceTaskUrl=https://sonarcloud.io/api/ce/task?id=AYD0LMxZNC4PFqHB6V2d

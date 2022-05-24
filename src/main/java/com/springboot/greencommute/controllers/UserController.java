@@ -4,12 +4,10 @@ import com.springboot.greencommute.dto.UserDto;
 import com.springboot.greencommute.entities.User;
 import com.springboot.greencommute.exception.DataNotFoundException;
 import com.springboot.greencommute.mapper.UserMapper;
-import com.springboot.greencommute.service.SavedJobService;
 import com.springboot.greencommute.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 import java.util.Optional;
 
 @RestController

@@ -20,10 +20,6 @@ public class UserSavedJobController {
     @Autowired
     private SavedJobService savedJobService;
 
-    @Autowired
-    private JobMapper jobMapper;
-
-
     @GetMapping("/users/{userId}/savedJobs")
     public List<JobDto> getSavedJobsForUser(@PathVariable int userId){
          return savedJobService.getSavedJobsForUser(userId);
